@@ -39,27 +39,40 @@
             --card-bg-dark: rgba(0, 0, 0, 0.05);
         }
 
-        /* Hero Section Video */
-     .video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1; /* Под контентом */
-  overflow: hidden;
-}
+        /* Hero Section Video - ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ ПОЛНОЭКРАННОГО ВИДЕО */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-.video-background iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 177.78vh; /* 16:9 пропорции */
-  height: 100vh;
-  transform: translate(-50%, -50%);
-  pointer-events: none; /* чтобы не кликалось */
-  filter: brightness(0.5); /* затемнение чтобы текст читался */
-}
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* 16:9 aspect ratio */
+            min-height: 100vh;
+            min-width: 177.78vh; /* 16:9 aspect ratio */
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            filter: brightness(0.4) contrast(1.1); /* Затемнение для читаемости текста */
+        }
+
+        /* Дополнительное затемнение для hero секции */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
 
         /* Gradient for hover effects */
         .card-glow-hover {
@@ -138,52 +151,41 @@
     </button>
 </nav>
 
-<!-- Шапка (Hero Section) with Video Background -->
+<!-- Hero Section with Full Screen Video Background -->
 <header class="h-screen flex items-center justify-center text-center p-4 relative overflow-hidden">
-    <!-- Video Background - Пожалуйста, замените URL-адрес видео на ваш. -->
- <header class="h-screen flex items-center justify-center text-center p-4 relative overflow-hidden">
-  <!-- Видео-фон YouTube -->
-  <div class="video-background">
-    <iframe src="https://www.youtube.com/embed/4CdryStmMUs?autoplay=1&mute=1&loop=1&playlist=4CdryStmMUs&controls=0&showinfo=0&modestbranding=1"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-   <!-- Hero Section -->
-<!-- Hero Section -->
-<header class="h-screen flex items-center justify-center text-center p-4 relative overflow-hidden">
-
-  <!-- Видео-фон YouTube -->
-  <div class="video-background">
-    <iframe src="https://www.youtube.com/embed/4CdryStmMUs?autoplay=1&mute=1&loop=1&playlist=4CdryStmMUs&controls=0&showinfo=0&modestbranding=1"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
-  </div>
-  <!-- Твой текст/фото сверху -->
-  <div class="flex items-center justify-between w-full max-w-6xl mx-auto p-6 rounded-2xl space-y-6 fade-in">
-    <div class="space-y-6 text-left">
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-        <span class="text-white">МустафоШох</span>
-      </h1>
-      <p class="text-lg md:text-2xl text-gray-400 font-medium max-w-2xl">
-        Создаю современные веб-сайты, Telegram-ботов и эффективное продвижение в Instagram.
-      </p>
-      <a href="#contact" class="inline-block mt-8 px-8 py-3 rounded-full text-white font-bold tracking-wide transition-all transform hover:scale-105 shadow-lg bg-gray-800 hover:bg-gray-700">
-        Связаться со мной
-      </a>
+    <!-- Полноэкранный видео-фон YouTube -->
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/4CdryStmMUs?autoplay=1&mute=1&loop=1&playlist=4CdryStmMUs&controls=0&showinfo=0&modestbranding=1&rel=0"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
     </div>
-    <div class="profile-image-container">
-      <img src="photo_2024-09-30_18-34-58.jpg" alt="Профиль" class="w-[225px] h-[225px] rounded-full border-2 border-white object-cover shadow-lg">
-    </div>
-  </div>
 
+    <!-- Дополнительный слой затемнения -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Контент поверх видео -->
+    <div class="flex items-center justify-between w-full max-w-6xl mx-auto p-6 rounded-2xl space-y-6 fade-in relative z-10">
+        <div class="space-y-6 text-left">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                <span class="text-white drop-shadow-2xl">МустафоШох</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-200 font-medium max-w-2xl drop-shadow-lg">
+                Создаю современные веб-сайты, Telegram-ботов и эффективное продвижение в Instagram.
+            </p>
+            <a href="#contact" class="inline-block mt-8 px-8 py-3 rounded-full text-white font-bold tracking-wide transition-all transform hover:scale-105 shadow-lg bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm">
+                Связаться со мной
+            </a>
+        </div>
+        <div class="profile-image-container">
+            <img src="photo_2024-09-30_18-34-58.jpg" alt="Профиль" class="w-[225px] h-[225px] rounded-full border-4 border-white/80 object-cover shadow-2xl">
+        </div>
+    </div>
 </header>
 
 <!-- Блок "Услуги" -->
-<section id="services" class="py-20 px-4 relative z-10">
+<section id="services" class="py-20 px-4 relative z-10 bg-[var(--bg-dark)]">
     <div class="container mx-auto max-w-6xl text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-12 fade-in">Мои услуги</h2>
         <div class="space-y-12">
@@ -248,7 +250,7 @@
 </section>
 
 <!-- Блок статистики с анимированными счетчиками -->
-<section id="stats" class="py-20 px-4 relative z-10">
+<section id="stats" class="py-20 px-4 relative z-10 bg-[var(--bg-dark)]">
     <div class="container mx-auto max-w-6xl text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-12 fade-in">Статистика</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in">
@@ -272,7 +274,7 @@
 </section>
 
 <!-- Интерактивный график роста -->
-<section id="growth-chart" class="py-20 px-4 relative z-10">
+<section id="growth-chart" class="py-20 px-4 relative z-10 bg-[var(--bg-dark)]">
     <div class="container mx-auto max-w-6xl text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-12 fade-in">Рост проектов и клиентов</h2>
         <div class="rounded-2xl p-6 bg-[var(--card-bg-dark)] backdrop-blur-md fade-in chart-container">
@@ -282,7 +284,7 @@
 </section>
 
 <!-- Портфолио -->
-<section id="portfolio" class="py-20 px-4 relative z-10">
+<section id="portfolio" class="py-20 px-4 relative z-10 bg-[var(--bg-dark)]">
     <div class="container mx-auto max-w-6xl text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-12 fade-in">Мои работы</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 fade-in">
@@ -307,7 +309,7 @@
 </section>
 
 <!-- Отзывы на главной странице (только 3) -->
-<section id="testimonials" class="py-20 px-4 relative z-10">
+<section id="testimonials" class="py-20 px-4 relative z-10 bg-[var(--bg-dark)]">
     <div class="container mx-auto max-w-4xl text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-12 fade-in">Отзывы клиентов</h2>
         <div class="grid md:grid-cols-3 gap-8 mb-8 fade-in">
@@ -352,25 +354,21 @@
 </section>
 
 <!-- Контакты -->
-<section id="contact" class="py-20 px-4 relative z-10">
+<section id="contact" class="py-20 px-4 relative z-10 bg-[var(--bg-dark)]">
     <div class="container mx-auto max-w-2xl text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-8 fade-in">Свяжитесь со мной</h2>
         <p class="text-gray-400 text-lg mb-8 fade-in">Я всегда открыт для новых проектов и интересных идей. Не стесняйтесь, напишите мне!</p>
         <div class="flex flex-col md:flex-row justify-center gap-4 fade-in">
             <a href="https://t.me/MustafoShoh2008" target="_blank" class="flex items-center justify-center px-6 py-3 rounded-full text-white font-bold transition-transform transform hover:scale-105 shadow-lg bg-gray-800 hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.328 15.328a.8.8 0 01-.58-.293l-2.486-2.316a.8.8 0 01.11-.945l1.096-.92a.8.8 0 011.114.11L14.545 14a.8.8 0 01-.11.945l-1.096.92a.8.8 0 01-1.114-.11L8.747 9.87a.8.8 0 01.11-.945l1.096-.92a.8.8 0 011.114.11L14.545 14a.8.8 0 01-.11.945l-1.096.92a.8.8 0 01-1.114-.11z" /></svg>
-                Telegram
-            </a>
-            <a href="https://www.instagram.com/ff__premium" target="_blank" class="flex items-center justify-center px-6 py-3 rounded-full text-white font-bold transition-transform transform hover:scale-105 shadow-lg bg-gray-800 hover:bg-gray-700">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.18 10a3.18 3.18 0 11-6.36 0 3.18 3.18 0 016.36 0zm-3.18-1.42a1.42 1.42 0 100 2.84 1.42 1.42 0 000-2.84zm6.06-1.55a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" /></svg>
-                Instagram
+                Telegram
             </a>
         </div>
     </div>
 </section>
 
 <!-- Футер -->
-<footer class="py-6 text-center text-gray-500 text-sm">
+<footer class="py-6 text-center text-gray-500 text-sm bg-[var(--bg-dark)]">
     <div class="container mx-auto">
         <p>&copy; 2025 МустафоШох. Все права защищены.</p>
         <p>Создано с ❤️ и кодом.</p>
@@ -400,23 +398,13 @@
     const moonIcon = document.getElementById('moon-icon');
     const sunIcon = document.getElementById('sun-icon');
 
-    // Check saved theme preference on load
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light-mode') {
-        body.classList.add('light-mode');
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-    }
-
     themeToggleBtn.addEventListener('click', () => {
         body.classList.toggle('light-mode');
 
         if (body.classList.contains('light-mode')) {
-            localStorage.setItem('theme', 'light-mode');
             moonIcon.style.display = 'none';
             sunIcon.style.display = 'block';
         } else {
-            localStorage.setItem('theme', 'dark-mode');
             moonIcon.style.display = 'block';
             sunIcon.style.display = 'none';
         }
@@ -549,9 +537,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
