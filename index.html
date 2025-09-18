@@ -40,13 +40,13 @@
         }
 
         /* Hero Section Video */
-        .video-background {
+     .video-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -1; /* Под контентом */
   overflow: hidden;
 }
 
@@ -54,22 +54,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 177.78vh; /* 16:9 */
+  width: 177.78vh; /* 16:9 пропорции */
   height: 100vh;
   transform: translate(-50%, -50%);
-  pointer-events: none;
+  pointer-events: none; /* чтобы не кликалось */
+  filter: brightness(0.5); /* затемнение чтобы текст читался */
 }
-
-        #hero-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            filter: brightness(0.5) blur(1px);
-        }
 
         /* Gradient for hover effects */
         .card-glow-hover {
@@ -161,23 +151,35 @@
     </iframe>
   </div>
 
-    
-    <div class="flex items-center justify-between w-full max-w-6xl mx-auto p-6 rounded-2xl space-y-6 fade-in">
-        <div class="space-y-6 text-left">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-                <span class="text-white">МустафоШох</span>
-            </h1>
-            <p class="text-lg md:text-2xl text-gray-400 font-medium max-w-2xl">
-                Создаю современные веб-сайты, Telegram-ботов и эффективное продвижение в Instagram.
-            </p>
-            <a href="#contact" class="inline-block mt-8 px-8 py-3 rounded-full text-white font-bold tracking-wide transition-all transform hover:scale-105 shadow-lg bg-gray-800 hover:bg-gray-700">
-                Связаться со мной
-            </a>
-        </div>
-        <div class="profile-image-container">
-            <img src="photo_2024-09-30_18-34-58.jpg" alt="Профиль" class="w-[225px] h-[225px] rounded-full border-2 border-white object-cover shadow-lg">
-        </div>
+   <!-- Hero Section -->
+<!-- Hero Section -->
+<header class="h-screen flex items-center justify-center text-center p-4 relative overflow-hidden">
+
+  <!-- Видео-фон YouTube -->
+  <div class="video-background">
+    <iframe src="https://www.youtube.com/embed/4CdryStmMUs?autoplay=1&mute=1&loop=1&playlist=4CdryStmMUs&controls=0&showinfo=0&modestbranding=1"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+  <!-- Твой текст/фото сверху -->
+  <div class="flex items-center justify-between w-full max-w-6xl mx-auto p-6 rounded-2xl space-y-6 fade-in">
+    <div class="space-y-6 text-left">
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+        <span class="text-white">МустафоШох</span>
+      </h1>
+      <p class="text-lg md:text-2xl text-gray-400 font-medium max-w-2xl">
+        Создаю современные веб-сайты, Telegram-ботов и эффективное продвижение в Instagram.
+      </p>
+      <a href="#contact" class="inline-block mt-8 px-8 py-3 rounded-full text-white font-bold tracking-wide transition-all transform hover:scale-105 shadow-lg bg-gray-800 hover:bg-gray-700">
+        Связаться со мной
+      </a>
     </div>
+    <div class="profile-image-container">
+      <img src="photo_2024-09-30_18-34-58.jpg" alt="Профиль" class="w-[225px] h-[225px] rounded-full border-2 border-white object-cover shadow-lg">
+    </div>
+  </div>
+
 </header>
 
 <!-- Блок "Услуги" -->
@@ -547,6 +549,7 @@
 </script>
 </body>
 </html>
+
 
 
 
